@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>reveal.js - The HTML Presentation Framework</title>
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <!-- beige default moon night serif simple sky solarized -->
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-markdown>
+          ![ruby](img/ruby-logo-R.png)
+          </section>
+
+        <section>
+          <section data-markdown>
+            #Why?
+          </section>
+          <section data-markdown>
+          > "I wanted a scripting language that was more powerful than Perl, and more object-oriented than Python. That's why I decided to design my own language."
+
+          (Yokihiro "Matz" Matsumoto)
+          </section>
+          <section data-markdown>
+          > "I hope to see Ruby help every programmer in the world to be productive, and to enjoy programming, and to be happy. That is the primary purpose of Ruby language."
+          
+          (Yokihiro "Matz" Matsumoto)
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+          # Features
+          </section>
+          <section data-markdown>
+            - interpretiert
+            - Garbage collected
+            - Objekt-orientiert
+            - dynamisch stark Typisiert
+            - offene Klassen
+            - Alles ist ein Ausdruck
+            - Closures
+            - Continuations
+            - Mehrere Character-Encodings
+            - Benannte Argumente
+            - nur false und nil sind nicht true-ish
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+          # Syntax
+          </section>
+          <section data-markdown>
+            - keine Semicolons am Zeilenende
+            - Klammern nur, wo nötig
+            - Implizites Return-Statement
+            - Literale für Hash, Array, Range, Regexp, Wort-Array, Symbol-Array
+            - Yoda-Code
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Beispiele</h1>
+          </section>
+          <section>
+            <pre><code>
+            puts -199.abs                              #=> 199
+            puts "ice is nice".length                  #=> 11
+            puts "ruby is cool.".index "u"             #=> 1
+            puts "Nice Day Isn't It?".downcase.split("").uniq.sort.join
+                                                       #=> ' ?acdeinsty
+            </code></pre>
+          </section>
+          <section>
+            <pre><code>
+            class Fixnum
+              def + other
+                self - other
+              end
+            end
+
+            p 5 + 3  #=> 2
+            p 5.+(3) #=> 2
+            </code></pre>
+          </section>
+          <section data-markdown>
+            ![ruby](img/one_foot.jpg)
+          </section>
+          <section data-markdown>
+            ![ruby](img/two_feet.jpg)
+          </section>
+          <section>
+            <pre><code>
+            def foo
+              'klar!'
+            end
+
+            if a = foo
+              puts a
+            end
+
+            b = if true
+              'natürlich!'
+            end
+
+            puts b
+            puts 'klar' if true
+            </code></pre>
+          </section>
+          <section>
+            <pre><code>
+            (1..100).each do |i|
+              puts i
+            end
+            </code></pre>
+          </section>
+          <section>
+            <pre><code>
+            def double &block
+              block.call
+              block.call
+            end
+
+            double do
+              puts 'Hi!'   #=> Hi!
+            end            #=> Hi!
+            </code></pre>
+          </section>
+          <section>
+            <pre><code>
+            describe MySum do
+              it "performs a sum" do
+                sum = MyClass.add 1, 1
+                sum.should == 2
+              end
+            end
+            </code></pre>
+          </section>
+        </section>
+
+        <section data-markdown>
+        ##Implementierungen
+
+        - MRI (Ruby 1.8)
+        - YARV (Ruby 1.9/2.0)
+        - jRuby
+        - Rubinius
+        - MacRuby (Obj. C)
+        - Maglev (Gemstone VM)
+        - Iron Ruby (.Net)
+        - mRuby
+        - Topaz (PyPy VM)
+        </section>
+
+        <section>
+          <section data-markdown>
+          ![ruby](img/gems.jpg)
+          #Ruby-Gems
+          </section>
+          <section data-markdown>
+          ##Kommandos
+
+          - `gem install GEMNAME`
+          - `gem list`
+          - `gem build GEMSPEC`
+          - `gem push GEMFILE`
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+          ![ruby](img/rake.jpg)
+          #Rake
+          </section>
+          <section data-markdown>
+            ##Rakefile
+
+                task default: :test
+
+                desc 'Run all the tests'
+                task :test do
+                  ruby "test/unittest.rb"
+                end
+          </section>
+          <section data-markdown>
+          ##Methoden
+
+          - `task`
+          - `file`
+          - `directory`
+          - `namespace`
+          - `multitask`
+          </section>
+          <section data-markdown>
+          ##Kommandos
+
+          - `rake`
+          - `rake TASKNAME`
+          - `rake -T`
+          </section>
+        </section>
+        <section>
+        <section data-markdown>
+            ![ruby](img/bundle.jpg)
+
+            #Bundler
+          </section>
+          <section data-markdown>
+            ##Gemfile
+
+                source 'http://rubygems.org'
+
+                gem 'sinatra', '~> 0.9.0'
+                gem 'rack-cache'
+                gem 'rack-bug'
+                gem 'lautfm_utils', '>= 0.0.23', path: '/Users/niko/laut/lautfm_utils'
+                gem 'ad_machine', '>= 0.2.9', :git => 'git@github.com:lautde/ad_machine.git'
+          </section>
+          <section data-markdown>
+          ##Bundler Kommandos
+
+          - `bundle install`
+          - `bundle update GEMNAME`
+          - `bundle pack`
+          - `bundle install --deployment`
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+          ![ruby](img/capestrano.jpg)
+
+          #Capistrano
+          </section>
+          <section data-markdown>
+          ##Capistrano Kommandos
+
+          - `cap -T`
+          - `cap deploy`
+          </section>
+          <section data-markdown>
+          ##Capfile
+              
+              set :application, 'www'
+              set :deploy_to, '/export/webroot/www'
+              set :user, 'laut'
+
+              set :scm, :git
+              set :repository, 'git@github.com:lautde/laut.fm-V2.git'
+              set :branch, 'master'
+
+              namespace :deploy do
+                task :restart_daemons, roles: :web do
+                  ...
+                end
+                
+                after 'deploy', 'deploy:restart_daemons'
+              end
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+          ![ruby](img/rubber_duck.jpg)
+
+          #RVM
+          </section>
+          <section data-markdown>
+          ##RVM Kommandos
+
+          - `curl -L https://get.rvm.io | bash`
+          - `rvm install 2.0.0`
+          - `rvm use 2.0.0 --default`
+          - `rvm install [jruby|rbx|maglev|ironruby|macruby]`
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+          ![ruby](img/rotten.jpg)
+          ##The bad, the ugly
+
+          </section>
+          <section data-markdown>
+          - Geschwindigkeit
+          - Concurrency Model
+          - Semantic Versioning
+          - Installation
+          - Tooling
+          </section>
+          <section data-markdown>
+          ##Gotchas
+
+          - Monkey Patching
+          - $!, $&amp;, $+
+          - and or &amp; || precedence
+          - Regex ^...$ vs. \A...\z
+          - == === #eql? #equal?
+          - super vs. super()
+          - 1/2 != 0.5
+          </section>
+        </section>
+
+        <section data-markdown>
+          ##Links
+
+          - [en.wikipedia.org](http://en.wikipedia.org/wiki/Ruby_(programming_language)
+          - [try Ruby](http://tryruby.org)
+          - [_why's poignant guide to Ruby](http://mislav.uniqpath.com/poignant-guide/)
+          - [Ruby Best Practices Book PDF](http://blog.rubybestpractices.com/posts/gregory/022-rbp-now-open.html)
+          - [rubygems.org](http://rubygems.org/)
+          - [Ruby Toolbox](https://www.ruby-toolbox.com/)
+          - [Rake Homepage](http://rake.rubyforge.org/)
+          - [Rake Präsentation](http://de.slideshare.net/filmprog/rake-not-your-fathers-build-tool)
+          - [Bundler Homepage](http://gembundler.com/)
+          - [Capistrano Homepage](http://capistranorb.com/)
+          - [Capistrano Walkthrough](http://guides.beanstalkapp.com/deployments/deploy-with-capistrano.html)
+          - [RVM Homepage](https://rvm.io/)
+          - [Spinning Earth Ruby Quine](http://mamememo.blogspot.de/2010/09/qlobe.html)
+        </section>
+
+        <section data-markdown>
+          ##Img Credits
+
+          - http://www.flickr.com/photos/19684903@N00/317182464 (rake)
+          - http://www.flickr.com/photos/ludaarce/1056521098 (gems)
+          - http://www.flickr.com/photos/warmestregards/617232144 (bundle)
+          - http://www.flickr.com/photos/chrisschoenbohm/5257019973 (capestrano)
+          - http://www.flickr.com/photos/joeshlabotnik/1721746230 (rotten)
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
