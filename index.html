@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>reveal.js - The HTML Presentation Framework</title>
+    <title>Eine Ruby Einführung - SDC 2013</title>
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Hakim El Hattab">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="css/reveal.min.css">
     <!-- beige default moon night serif simple sky solarized -->
-    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
     <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="lib/css/solarized_light.css">
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
       document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
@@ -21,22 +21,24 @@
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
     <style>
-      body{
-        background: black url(img/bg.jpg) -200px -180px no-repeat;
-      }
+      .start body{ background: white url(img/bg.jpg) 0px -0px no-repeat; }
+      body{ background: white url(img/bg_blur.jpg) 0px -0px no-repeat; }
+      .slides section{ background: rgba(255,255,255,0.35); }
     </style>
   </head>
   <body>
     <div class="reveal">
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
+        <section data-state="start">
+        </section>
         <section data-markdown>
           ![ruby](img/ruby-logo-R.png)
           </section>
 
         <section>
           <section data-markdown>
-            #Why?
+            #Warum?
           </section>
           <section data-markdown>
           > "I wanted a scripting language that was more powerful than Perl, and more object-oriented than Python. That's why I decided to design my own language."
@@ -52,19 +54,30 @@
 
         <section>
           <section data-markdown>
+            #Wie?
+          </section>
+          <section data-markdown>
+            - Perl String Features
+            - Perl Syntax minus Gekröse
+            - Smalltalk Type System
+            - Lisp Closures, anonyme Funktionen
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
           # Features
           </section>
           <section data-markdown>
             - interpretiert
-            - Garbage collected
-            - Objekt-orientiert
-            - dynamisch stark Typisiert
+            - Garbage-collected
+            - objektorientiert
+            - dynamisch typisiert
             - offene Klassen
-            - Alles ist ein Ausdruck
+            - alles ist ein Ausdruck
             - Closures
             - Continuations
-            - Mehrere Character-Encodings
-            - Benannte Argumente
+            - mehrere Character-Encodings
+            - benannte Argumente
             - nur false und nil sind nicht true-ish
           </section>
         </section>
@@ -87,24 +100,24 @@
             <h1>Beispiele</h1>
           </section>
           <section>
-            <pre><code>
-            puts -199.abs                              #=> 199
-            puts "ice is nice".length                  #=> 11
-            puts "ruby is cool.".index "u"             #=> 1
-            puts "Nice Day Isn't It?".downcase.split("").uniq.sort.join
-                                                       #=> ' ?acdeinsty
+            <pre><code class="ruby">
+puts -199.abs                              #=> 199
+puts 'Chunky Bacon!'.length                #=> 13
+puts 'ruby is cool.'.index 'u'             #=> 1
+puts %q{Nice Day Isn't It?}.downcase.split('').uniq.sort.join
+                                            #=> ' ?acdeinsty
             </code></pre>
           </section>
           <section>
-            <pre><code>
-            class Fixnum
-              def + other
-                self - other
-              end
-            end
+            <pre><code class="ruby">
+class Fixnum
+  def + other
+    self - other
+  end
+end
 
-            p 5 + 3  #=> 2
-            p 5.+(3) #=> 2
+p 5 + 3  #=> 2
+p 5.+(3) #=> 2
             </code></pre>
           </section>
           <section data-markdown>
@@ -114,50 +127,50 @@
             ![ruby](img/two_feet.jpg)
           </section>
           <section>
-            <pre><code>
-            def foo
-              'klar!'
-            end
+            <pre><code class="ruby">
+def foo
+  'klar!'
+end
 
-            if a = foo
-              puts a
-            end
+if a = foo
+  puts a
+end
 
-            b = if true
-              'natürlich!'
-            end
+b = if true
+  'natürlich!'
+end
 
-            puts b
-            puts 'klar' if true
+puts b
+puts 'klar' if true
             </code></pre>
           </section>
           <section>
-            <pre><code>
-            (1..100).each do |i|
-              puts i
-            end
+            <pre><code class="ruby">
+(1..100).each do |i|
+  puts i
+end
             </code></pre>
           </section>
           <section>
-            <pre><code>
-            def double &block
-              block.call
-              block.call
-            end
+            <pre><code class="ruby">
+def double &block
+  block.call
+  block.call
+end
 
-            double do
-              puts 'Hi!'   #=> Hi!
-            end            #=> Hi!
+double do
+  puts 'Hi!'   #=> Hi!
+end            #=> Hi!
             </code></pre>
           </section>
           <section>
-            <pre><code>
-            describe MySum do
-              it "performs a sum" do
-                sum = MyClass.add 1, 1
-                sum.should == 2
-              end
-            end
+            <pre><code class="ruby">
+describe MySum do
+  it "performs a sum" do
+    sum = MyClass.add 1, 1
+    sum.should == 2
+  end
+end
             </code></pre>
           </section>
         </section>
@@ -292,6 +305,8 @@
           - `curl -L https://get.rvm.io | bash`
           - `rvm install 2.0.0`
           - `rvm use 2.0.0 --default`
+          - `rvm use 1.9.3-p285`
+          - `rvm use jruby`
           - `rvm install [jruby|rbx|maglev|ironruby|macruby]`
           </section>
         </section>
@@ -332,6 +347,7 @@
           - [Try Ruby](http://tryruby.org)
           - [Ruby Best Practices Book PDF](http://blog.rubybestpractices.com/posts/gregory/022-rbp-now-open.html)
           - [_why's poignant guide to Ruby](http://mislav.uniqpath.com/poignant-guide/)
+          - [Ruby is an acceptable Lisp](http://www.randomhacks.net/articles/2005/12/03/why-ruby-is-an-acceptable-lisp)
           - [Rubygems Homepage](http://rubygems.org/)
           - [Ruby Toolbox](https://www.ruby-toolbox.com/)
           - [Rake Homepage](http://rake.rubyforge.org/)
