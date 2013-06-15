@@ -30,7 +30,9 @@
     <div class="reveal">
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-        <section data-state="start">
+        <section>
+          <section data-state="start">
+          </section>
         </section>
         <section data-markdown>
           ![ruby](img/ruby-logo-R.png)
@@ -170,6 +172,27 @@ describe MySum do
     sum = MyClass.add 1, 1
     sum.should == 2
   end
+end
+            </code></pre>
+          </section>
+          <section>
+            <pre><code class="ruby">
+require 'sinatra'
+
+get '/hi' do
+  'Hello World!'
+end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code class="ruby">
+doc 'The schedule of a single station grouped by playlists.'
+doc :example, 'http://HOSTNAME/station/deepgroove/playlists'
+doc :parameters, {station_name: '[\w\d_\-]+'}
+doc :key, '/station/{station_name}/playlists'
+get %r{\A/station/([\w\d_\-]+)/playlists\Z} do |name|
+  expires schedule_expiration, :public, :must_revalidate
+  RedisStore::Playlists.find(name)
 end
             </code></pre>
           </section>
